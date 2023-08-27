@@ -12,6 +12,7 @@ import java.util.UUID;
 @Service
 public class ClientServiceImpl implements ClientService {
     HashMap<String, ClientModel> clientModelHashMap = new HashMap<>();
+
     @Override
     public void createClient(ClientModel clientModel) {
         clientModel.setClientId(UUID.randomUUID().toString());
@@ -29,11 +30,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void updateClientById(String clientId, ClientModel clientModel) {
-        clientId = clientModel.getClientId();
-        if (clientModelHashMap.containsKey(clientId)) {
-            clientModel.setClientId(clientId);
-            clientModelHashMap.put(clientId, clientModel);
+    public void updateClientById(ClientModel clientModel) {
+        if (clientModelHashMap.containsKey(clientModel.getClientId())) {
+            createClient(clientModel);
         }
     }
 

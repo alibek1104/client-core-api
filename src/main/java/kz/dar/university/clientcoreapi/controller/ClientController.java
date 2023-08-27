@@ -34,10 +34,8 @@ public class ClientController {
         return clientService.getClientById(clientId);
     }
     @PutMapping("/{clientId}")
-    public void updateClientById(@PathVariable String clientId,
-                                 @RequestBody ClientModel clientModel) {
-        clientModel.setClientId(clientId);
-        clientService.updateClientById(clientId, clientModel);
+    public void updateClientById(@RequestBody ClientModel clientModel) {
+        clientService.updateClientById(clientModel);
     }
     @DeleteMapping("/{clientId}")
     public void deleteClientById(@PathVariable String clientId) {
